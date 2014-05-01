@@ -11,7 +11,7 @@ module Bookie
         if !user
           puts bmark.username
         end
-        puts bmark.description
+        puts "#{bmark.description} || #{bmark.tag_str}"
         puts bmark.url
         puts "stored: #{bmark.stored}"
         if bmark.updated != ""

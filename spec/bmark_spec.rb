@@ -36,6 +36,7 @@ describe Bookie::Bmark do
 
   it "should export tags" do
     expect(@bookie.tags).to eq(["search", "giant"])
+    expect(@bookie.tag_str).to eq("search giant")
   end
 
   it "should implement equality" do
