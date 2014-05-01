@@ -41,6 +41,10 @@ describe Bookie::Client do
       expect(@bmarks[0].url).to match(/(?:https?:\/\/).+/)
     end
 
+    it "tags should be a list of hashes" do
+      expect(@bmarks[0].tags[0]).to be_an_instance_of(Hash)
+    end
+
     it "should return bookmarks from history" do
       expect(@history).to be_an_instance_of(Array)
       expect(@history.length).to eq(2)
