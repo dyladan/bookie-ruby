@@ -14,7 +14,9 @@ module Bookie
         puts bmark.description
         puts bmark.url
         puts "stored: #{bmark.stored}"
-        puts "updated: #{bmark.updated}"
+        if bmark.updated != ""
+          puts "updated: #{bmark.updated}"
+        end
         puts
       end
     end
