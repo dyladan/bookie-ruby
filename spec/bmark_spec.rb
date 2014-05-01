@@ -2,7 +2,21 @@ require "bookie/bmark"
 
 describe Bookie::Bmark do
   before :all do
-    @hash = {"username"=>"dyladan", "updated"=>"2014-04-29 14:08:43", "extended"=>"", "description"=>"Google", "tags"=>[{"tid"=>891, "name"=>"search"}], "url"=>"https://www.google.com/", "bid"=>142454, "total_clicks"=>9, "stored"=>"2014-04-29 14:06:34", "inserted_by"=>"chrome_ext", "tag_str"=>"search giant", "clicks"=>1, "hash_id"=>"d0e196a0c25d35"}
+    @hash = {
+      "username"=>"dyladan",
+      "updated"=>"2014-04-29 14:08:43",
+      "extended"=>"Do No Evil",
+      "description"=>"Google",
+      "tags"=>[{"tid"=>891, "name"=>"search"}],
+      "url"=>"https://www.google.com/",
+      "bid"=>142454,
+      "total_clicks"=>9,
+      "stored"=>"2014-04-29 14:06:34",
+      "inserted_by"=>"chrome_ext",
+      "tag_str"=>"search giant",
+      "clicks"=>1,
+      "hash_id"=>"d0e196a0c25d35"
+    }
     @bookie = Bookie::Bmark.new @hash
   end
 
@@ -35,7 +49,7 @@ describe Bookie::Bmark do
   end
 
   it "should export tags" do
-    expect(@bookie.tags).to eq(["search", "giant"])
+    expect(@bookie.tags).to eq([{"tid"=>891, "name"=>"search"}])
     expect(@bookie.tag_str).to eq("search giant")
   end
 

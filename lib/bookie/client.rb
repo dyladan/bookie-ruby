@@ -4,13 +4,14 @@ require 'json'
 
 module Bookie
   class Client
-    attr_reader :config
+    attr_accessor :config
     def initialize rc = "~/.bookierc"
       @config = ConfigParser.new(rc)["main"]
     end
 
-    def get_by_user user, count = 1, history = 1
+    def get_by_user user = nil, count = 1, history = 1
       count += history - 1
+      user ||= @config['username']
       uri = URI "#{@config['api_url']}/#{user}/bmarks?count=#{count}&with_content=true"
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true
