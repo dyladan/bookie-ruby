@@ -11,6 +11,10 @@ module Bookie
       end
     end
 
+    def tags
+      @tag_str.split
+    end
+
     def ==(bmark)
       return bmark.hash_id == @hash_id
     end
