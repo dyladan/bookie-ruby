@@ -52,4 +52,16 @@ describe Bookie::Client do
       expect(@history[1]).to eq(@bmarks[2])
     end
   end
+
+  describe "::search" do
+    it "should return [] on invalid input" do
+      empty_list = @bookie.search []
+      type_error = @bookie.search 1
+      no_args = @bookie.search
+
+      expect(empty_list).to eq([])
+      expect(type_error).to eq([])
+      expect(no_args).to eq([])
+    end
+  end
 end

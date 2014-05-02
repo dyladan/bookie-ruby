@@ -21,5 +21,12 @@ module Bookie
       return bmark_array[history-1..count]
     end
 
+    def search params = nil
+      if !params || params.class != Array || params == []
+        return []
+      end
+
+    end
+
   end
 end
