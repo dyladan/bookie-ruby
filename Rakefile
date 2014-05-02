@@ -7,3 +7,5 @@ end
 task :doctest do
   sh "bundle exec rspec spec --format d"
 end
+
+task :default => :test
