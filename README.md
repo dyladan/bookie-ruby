@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/dyladan/bookie-ruby.svg?branch=master)](https://travis-ci.org/dyladan/bookie-ruby)
+
 # Bookie
 
 Rubygem to interface with any [Bookie](https://github.com/bookieio/bookie) server.
@@ -12,7 +14,15 @@ Add this line to your application's Gemfile:
 
 ## Usage
 
-TODO: Write usage instructions here
+So far the only really working thing is get by user
+
+    import 'bookie'
+
+    client = Bookie::Client.new ".bookierc"
+    bmarks = client.get_by_user("dyladan", 5, 2)
+
+`bmarks` is now an array of type Bookie::Bmark which exports the following
+instance attributes: 
 
 ## Contributing
 
