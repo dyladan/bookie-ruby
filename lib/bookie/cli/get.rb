@@ -10,14 +10,8 @@ module Bookie
     :desc => "grab back into history"
 
     def get(user = nil, history = "1")
-      if File.exist?("bookierc")
-        client = Bookie::Client.new "bookierc"
-      elsif File.exist?(ENV['HOME'] + "/.bookierc")
-        client = Bookie::Client.new ENV['HOME'] + "/.bookierc"
-      else
-        puts "no bookierc"
-        exit(1)
-      end
+
+      client = Bookie::Client.new
 
       count = options[:count] || 1
       history = options[:history] || history

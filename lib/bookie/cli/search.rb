@@ -10,14 +10,8 @@ module Bookie
     :desc => "search for bmarks from USER"
 
     def search(terms, user = nil)
-      if File.exist?("bookierc")
-        client = Bookie::Client.new "bookierc"
-      elsif File.exist?(ENV['HOME'] + "/.bookierc")
-        client = Bookie::Client.new ENV['HOME'] + "/.bookierc"
-      else
-        puts "no bookierc"
-        exit(1)
-      end
+      client = Bookie::Client.new
+
 
       count = options[:count] || 1
       if options[:user]

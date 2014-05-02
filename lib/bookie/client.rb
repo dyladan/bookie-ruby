@@ -4,7 +4,12 @@ require 'bookie/helpers'
 module Bookie
   class Client
     attr_accessor :config
-    def initialize rc = "~/.bookierc"
+    def initialize rc = nil
+      rc ||= ENV['HOME'] + "/.bookierc"
+      if !File.exist?(rc)
+        puts "no bookierc"
+        exit(1)
+      end
       @config = ConfigParser.new(rc)["main"]
     end
 
