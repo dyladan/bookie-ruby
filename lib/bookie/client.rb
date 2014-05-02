@@ -10,7 +10,6 @@ module Bookie
 
     def get_by_user user = nil, count = 1, history = 1
       count += history - 1
-      user ||= @config['username']
 
       url = "#{@config['api_url']}/#{user}/bmarks?count=#{count}&with_content=true"
       json = Bookie::Helpers.get_json url

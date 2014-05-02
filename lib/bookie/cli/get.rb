@@ -2,13 +2,14 @@ require 'thor'
 
 module Bookie
   class CLI < Thor
-    desc "get [USERNAME [HISTORY]] [--count] [--user] [--history]",
+    desc "get [USERNAME [HISTORY]] [--count] [--history]",
     "get bmarks by USERNAME"
-    
+    method_option :count, :aliases => "-c",
+    :desc => "number of bmarks to grab"
+    method_option :history, :aliases => "-h",
+    :desc => "grab back into history"
+
     def get(user = nil, history = "1")
-      count = options[:count] || 1
-      history = options[:history] || history
-      
       if File.exist?("bookierc")
         client = Bookie::Client.new "bookierc"
       elsif File.exist?(ENV['HOME'] + "/.bookierc")
@@ -17,7 +18,9 @@ module Bookie
         puts "no bookierc"
         exit(1)
       end
-      
+
+      count = options[:count] || 1
+      history = options[:history] || history
       if options[:user]
         client.config["username"] = options[:user]
       end
