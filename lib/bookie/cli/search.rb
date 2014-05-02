@@ -19,14 +19,14 @@ module Bookie
         exit(1)
       end
 
-      count = options[:count] || 1
+      count = options[:count] || 10
       if options[:user]
         user = options[:user]
       end
 
       terms = terms.split
 
-      marks = client.search(terms, user)
+      marks = client.search(terms, user, count)
 
       marks.each do |bmark|
         if !user
