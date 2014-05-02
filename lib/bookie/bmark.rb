@@ -1,6 +1,3 @@
-require 'json'
-
-
 module Bookie
   class Bmark
     attr_reader :url, :description, :hash_id, :username, :updated, :stored,
