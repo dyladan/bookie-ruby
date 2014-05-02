@@ -21,11 +21,22 @@ module Bookie
       return bmark_array[history-1..count]
     end
 
-    def search params = nil
+    def search params = nil, user = nil
       if !params || params.class != Array || params == []
         return []
       end
 
+      terms = params.join "/"
+
+      endpoint = "/#{user}/bmarks/search/#{terms}"
+
+      url = "#{@config['api_url']}#{endpoint}"
+
+      json = Bookie::Helpers.get_json url
+      bmarks = json['search_results']
+      bmark_array = bmarks.map{|bmark| Bookie::Bmark.new bmark}.to_a
+
+      return bmark_array
     end
 
   end

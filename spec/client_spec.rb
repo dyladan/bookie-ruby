@@ -63,5 +63,12 @@ describe Bookie::Client do
       expect(type_error).to eq([])
       expect(no_args).to eq([])
     end
+
+    it "should return an array of bmarks" do
+      bmarks = @bookie.search ["coroutines"]
+      expect(bmarks).to be_an_instance_of(Array)
+      expect(bmarks[0]).to be_an_instance_of(Bookie::Bmark)
+      expect(bmarks.length).to be > 0
+    end
   end
 end
