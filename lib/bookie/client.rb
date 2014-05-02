@@ -1,6 +1,5 @@
 require 'configparser'
-require 'net/http'
-require 'json'
+require 'bookie/helpers'
 
 module Bookie
   class Client
@@ -12,13 +11,9 @@ module Bookie
     def get_by_user user = nil, count = 1, history = 1
       count += history - 1
       user ||= @config['username']
-      uri = URI "#{@config['api_url']}/#{user}/bmarks?count=#{count}&with_content=true"
-      http = Net::HTTP.new(uri.host, uri.port)
-      http.use_ssl = true
-      request = Net::HTTP::Get.new(uri.request_uri)
-      response = http.request(request)
 
-      json = JSON.parse(response.body)
+      url = "#{@config['api_url']}/#{user}/bmarks?count=#{count}&with_content=true"
+      json = Bookie::Helpers.get_json url
 
       bmarks = json['bmarks']
 

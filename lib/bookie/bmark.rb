@@ -6,8 +6,7 @@ module Bookie
     attr_reader :url, :description, :hash_id, :username, :updated, :stored,
                 :tag_str, :tags
 
-    def initialize input = {"url"=>nil}
-      @url = input["url"]
+    def initialize input
       input.keys.each do |name|
         instance_variable_set("@#{name}", input[name])
       end
