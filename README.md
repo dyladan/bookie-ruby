@@ -1,20 +1,14 @@
 # Bookie
 
-TODO: Write a gem description
+Rubygem to interface with any [Bookie](https://github.com/bookieio/bookie) server.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'bookie'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install bookie
+    git clone https://github.com/dyladan/bookie-ruby.git
+    cd bookie-ruby
+    rake install
 
 ## Usage
 
@@ -22,7 +16,7 @@ TODO: Write usage instructions here
 
 ## Contributing
 
-1. Fork it ( http://github.com/<my-github-username>/bookie/fork )
+1. Fork it [here](http://github.com/dyladan/bookie-ruby/fork)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
